@@ -1,4 +1,4 @@
 
 default:
-	touch uploads.db
+	echo "{}" > uploads.db
 	mkdir -p uploads
