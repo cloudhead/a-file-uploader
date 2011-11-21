@@ -1,0 +1,11 @@
+
+o A FILE UPLOADER
+
+For Soundcloud.
+By Alexis Sellier.
+
+o INSTRUCTIONS
+
+run `make` the first time.
+start server with `node . [port]`
+

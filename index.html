@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>a file uploader</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+  </head>
+  <body>
+    <h1>An Upload Form</h1>
+    <form id="uploader" action="/{{upload-id}}" method="post" enctype="multipart/form-data"
+          data-upload="{{upload-id}}">
+      <input name="file" type="file" id="file" />
+      <div id="progress-bar">
+        <div id="progress"></div>
+      </div>
+      <textarea name="text" id="text" placeholder="Enter a description here."></textarea><br/>
+      <input type="submit" value="Save" id="save"/><div id="md5"></div>
+    </form>
+    <script src="upload.js"></script>
+  </body>
+</html>
