@@ -206,9 +206,9 @@ function handleUpload(req, res) {
                 var rate = Math.round((length / 1024) / ((Date.now() - start) / 1000));
                 console.log('upload', uploadId, 'was successful (' + rate + ' KB/s)');
 
-                child.exec('md5 -q ' + './uploads/' + uploadId).stdout.on('data', function (md5) {
+                child.exec('shasum ' + './uploads/' + uploadId).stdout.on('data', function (sha) {
                     res.writeHead(200);
-                    res.end(md5);
+                    res.end(sha.split(' ')[0]);
                 });
             }
         } else { // Something weird happened. Error.
