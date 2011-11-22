@@ -210,7 +210,7 @@ function handleUpload(req, res) {
 
                 child.exec('shasum ' + './uploads/' + uploadId).stdout.on('data', function (sha) {
                     sha = sha.split(' ')[0];
-                    res.writeHead(200);
+                    res.writeHead(201);
 
                     if (req.headers['accept'] === 'text/plain') {
                         res.end(sha);
