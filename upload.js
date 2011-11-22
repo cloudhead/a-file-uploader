@@ -3,8 +3,12 @@ var form = document.getElementById('uploader'),
     text = document.getElementById('text'),
     file = document.getElementById('file'),
     save = document.getElementById('save'),
-    md5  = document.getElementById('md5'),
+    msg  = document.getElementById('msg'),
     progress = document.getElementById('progress');
+
+if (FormData) {
+    progress.parentNode.style.display = 'block';
+}
 
 // The user selects a file
 file.onchange = function () {
@@ -13,7 +17,7 @@ file.onchange = function () {
     if (this.value) {
         if (FormData) {
             formdata = new FormData(form);
-            req = new XHR('POST', form.action, {});
+            req = new XHR('POST', form.action, {Accept:'text/plain'});
             req.xhr.upload.onprogress = function (e) {
                 if (e.lengthComputable) {
                     var percent = Math.round(e.loaded / e.total * 100) + '%';
@@ -28,7 +32,7 @@ file.onchange = function () {
                 } else { // Success
                     progress.style.backgroundColor = 'green';
                     progress.innerHTML = 'Success (100%)';
-                    md5.innerHTML = res;
+                    msg.innerHTML = res;
                 }
             });
         }
@@ -39,10 +43,12 @@ save.onclick = function () {
     if (FormData) {
         if (file.value) {
             var uploadId = form.getAttribute('data-upload');
-            var req = new XHR('PUT', '/' + uploadId);
+            var req = new XHR('PUT', '/' + uploadId, {});
             req.send(text.value, function (e) {
                 if (e) { // Error
+                    msg.innerHTML = 'Error';
                 } else { // Success
+                    msg.innerHTML = 'Saved';
                 }
             });
         } else {

@@ -207,8 +207,16 @@ function handleUpload(req, res) {
                 console.log('upload', uploadId, 'was successful (' + rate + ' KB/s)');
 
                 child.exec('shasum ' + './uploads/' + uploadId).stdout.on('data', function (sha) {
+                    sha = sha.split(' ')[0];
                     res.writeHead(200);
-                    res.end(sha.split(' ')[0]);
+
+                    if (req.headers['accept'] === 'text/plain') {
+                        res.end(sha);
+                    } else {
+                        fs.readFile('./success.html', function (e, file) {
+                            res.end(file.toString().replace('{{checksum}}', sha));
+                        });
+                    }
                 });
             }
         } else { // Something weird happened. Error.

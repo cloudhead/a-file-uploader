@@ -10,11 +10,11 @@
     <form id="uploader" action="/{{upload-id}}" method="post" enctype="multipart/form-data"
           data-upload="{{upload-id}}">
       <input name="file" type="file" id="file" />
-      <div id="progress-bar">
+      <div id="progress-bar" style="display:none">
         <div id="progress"></div>
       </div>
       <textarea name="text" id="text" placeholder="Enter a description here."></textarea><br/>
-      <input type="submit" value="Save" id="save"/><div id="md5"></div>
+      <input type="submit" value="Save" id="save"/><div id="msg"></div>
     </form>
     <script src="upload.js"></script>
   </body>
