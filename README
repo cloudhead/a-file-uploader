@@ -4,6 +4,16 @@ o A FILE UPLOADER
 For Soundcloud.
 By Alexis Sellier.
 
+o REQUIREMENTS
+
+A recent version of node is all that is needed.
+
+o CONTENTS
+
+index.js: node.js server source code
+upload.js: javascript client code
+index.html: upload form
+
 o INSTRUCTIONS
 
 run `make` the first time.
