@@ -81,6 +81,8 @@ function handleSave(req, res) {
         req.on('data', function (c) { data += c });
         req.on('end', function () {
             uploads[uploadId].text = data;
+            res.writeHead(200);
+            res.end();
         });
     } else {
         res.writeHead(400);
